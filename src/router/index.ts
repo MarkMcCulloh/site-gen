@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Home from "../views/Home.vue";
-import nameMap from '@/nameMap';
+import nameMap from "@/nameMap";
 
 Vue.use(VueRouter);
 
@@ -9,7 +9,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: Home
   },
   {
     path: "/about",
@@ -28,12 +28,11 @@ const router = new VueRouter({
   routes
 });
 
-
 router.beforeResolve((to, from, next) => {
-  to.meta.nameData = nameMap[window.location.hostname.split(".")[0]]
-  if(to.meta.nameData){
-    next()
+  to.meta.nameData = nameMap[window.location.hostname.split(".")[0]];
+  if (to.meta.nameData) {
+    next();
   }
-})
+});
 
 export default router;
